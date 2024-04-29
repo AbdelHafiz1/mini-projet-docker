@@ -4,13 +4,13 @@ services:
     image: joxit/docker-registry-ui:main
     restart: always
     ports:
-      - 8090:80
+      - 8080:80
     environment:
       - SINGLE_REGISTRY=true
       - REGISTRY_TITLE=Docker Registry UI
       - DELETE_IMAGES=true
       - SHOW_CONTENT_DIGEST=true
-      - NGINX_PROXY_PASS_URL=http://registry-server:5010
+      - NGINX_PROXY_PASS_URL=http://registry-server:5000
       - SHOW_CATALOG_NB_TAGS=true
       - CATALOG_MIN_BRANCHES=1
       - CATALOG_MAX_BRANCHES=1
@@ -25,7 +25,7 @@ services:
     image: registry:2.8.2
     restart: always
     ports:
-      - 5010:5010
+      - 5000:5000
     environment:
       REGISTRY_STORAGE_DELETE_ENABLED: 'true'
       REGISTRY_HTTP_HEADERS_Access-Control-Origin: '[http://registry.example.com]'
